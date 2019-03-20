@@ -3,12 +3,16 @@
 <head>
     <title>Seek of Love</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-<header>{% block header %}{% endblock header %}</header>
-<div class="content">
-    {% block content %}{% endblock content %}
+<div class="row">
+    <header class="w-5 bg-primary">{% block header %}{% endblock header %}</header>
+    <div class="col bg-secondary">
+        {% block content %}{% endblock content %}
+    </div>
 </div>
+
 
 </body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
