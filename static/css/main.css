@@ -1,4 +1,11 @@
 .w-5 {
-    width: 130px;
-    max-width: 130px;
+    min-width: 130px;
+    position: fixed;
+    height: 100vh;
+}
+
+.body-container {
+    min-width: calc(100% - 130px);
+    margin-left: 130px;
+    height: 100vh;
 }
