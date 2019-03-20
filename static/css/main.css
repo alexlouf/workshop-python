@@ -1,11 +1,18 @@
 .w-5 {
     min-width: 130px;
+    max-width: 130px;
     position: fixed;
     height: 100vh;
+    background-color: #24232E;
+}
+
+.circle {
+    width: 70px;
+    height: 70px;
 }
 
 .body-container {
     min-width: calc(100% - 130px);
+    max-width: calc(100% - 130px);
     margin-left: 130px;
-    height: 100vh;
 }
