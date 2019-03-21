@@ -2,13 +2,14 @@
 {% block content %}
     <a href="/logout">Logout</a>
 
-    <div class="container mt-4">
+    <div class="container">
 
-    <div class="card-deck">
+    <div class="card-deck justify-content">
 
         {% for user in users %}
 
-        <div class="card position-relative card-shadow">
+        <div class="mt-5">
+        <div class="card card-shadow position-relative">
             <div class="card-body">
 
                 <!-- Match circle % -->
@@ -51,8 +52,12 @@
                     </div>
                 </div>
 
-                <!-- Voir + -->
-                <div class="position-absolute voirplus bg-success w-100 pt-1 pb-1">
+
+            </div>
+        </div>
+
+        <!-- Voir + -->
+        <div class="voirplus bg-success pt-1 pb-1">
                     <a class="text-white ml-4 pl-2" data-toggle="collapse" href="#collapseExample{{ user[0] }}"
                        role="button"
                        aria-expanded="false" aria-controls="collapseExample">
@@ -65,7 +70,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
 
     {% endfor %}
