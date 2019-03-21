@@ -73,3 +73,16 @@ input[type="range"]:after {
     border: 0;
 }
 
+.voirplus {
+    margin-top: 21px;
+    left: 0;
+    border-bottom: transparent 1px;
+    border-bottom-right-radius: 100px;
+}
+
+.card {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+}
+
