@@ -73,15 +73,15 @@ input[type="range"]:after {
 }
 
 .voirplus {
-    margin-top: 21px;
-    left: 0;
+    width: 225px;
+    margin-left: 15px;
     border-bottom: transparent 1px;
     border-bottom-right-radius: 100px;
 }
 
 .card {
-    width: 250px;
-    min-width: 250px;
-    max-width: 250px;
+    width: 225px;
+    min-width: 225px;
+    max-width: 225px;
 }
 
