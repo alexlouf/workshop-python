@@ -28,6 +28,17 @@ def logout():
     return home()
 
 
+@app.route("/signin")
+def signin():
+    return render_template("signin.html")
+
+
+@app.route("/validatesignin", methods=['POST'])
+def validatesignin():
+    print(request.form)
+    return home()
+
+
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.debug = True
