@@ -1,3 +1,5 @@
+import sqlite3
+
 from flask import Flask, flash, redirect, render_template, request, session, abort
 import os
 
@@ -10,7 +12,12 @@ def home():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return render_template('match.html')
+        with sqlite3.connect('ma_base.db') as con:
+            cur = con.cursor()
+            cur.execute("SELECT * FROM users")
+            allUsers = cur.fetchall()
+
+        return render_template('match.html', users=allUsers)
 
 
 @app.route('/login', methods=['POST'])
