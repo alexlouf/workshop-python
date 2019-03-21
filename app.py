@@ -19,13 +19,24 @@ def do_admin_login():
         session['logged_in'] = True
     else:
         flash('wrong password!')
-    return home()
+    return redirect('/')
 
 
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
-    return home()
+    return redirect('/')
+
+
+@app.route("/signin")
+def signin():
+    return render_template("signin.html")
+
+
+@app.route("/validatesignin", methods=['POST'])
+def validatesignin():
+    print(request.form)
+    return redirect('/')
 
 
 if __name__ == "__main__":

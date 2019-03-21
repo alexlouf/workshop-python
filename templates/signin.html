@@ -1,0 +1,142 @@
+{% extends "base.html" -%}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col">
+                <h2>Inscrivez votre profil</h2>
+                <form action="/validatesignin" method="POST" class="mt-5">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Je suis :</h3>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="sexe" id="sexe1" value="homme" checked>
+                              <label class="form-check-label" for="sexe1">
+                                Un homme
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="sexe" id="sexe2" value="femme">
+                              <label class="form-check-label" for="sexe2">
+                                Une femme
+                              </label>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="nom" class="h3">Nom :</label>
+                                <input type="text" class="form-control" id="nom" placeholder="Nom" name="name">
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="age" class="h3">Age :</label>
+                                <select class="form-control" id="age" name="age">
+                                    {% for n in range(18,100) %}
+                                        <option value="{{ n }}">{{ n }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="email" class="h3">Email address :</label>
+                                <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3>Je recherche :</h3>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="orientation_sexuelle" id="orientation_sexuelle1" value="homme" checked>
+                              <label class="form-check-label" for="orientation_sexuelle1">
+                                Un homme
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="orientation_sexuelle" id="orientation_sexuelle2" value="femme">
+                              <label class="form-check-label" for="orientation_sexuelle2">
+                                Une femme
+                              </label>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="prenom" class="h3">Prénom :</label>
+                                <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="surname">
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="ville" class="h3">Ville :</label>
+                                <input type="text" class="form-control" id="ville" placeholder="Ville" name="city">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="password" class="h3">Mot de passe :</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="password2" class="h3">Confirmation :</label>
+                                <input type="password" class="form-control" id="password2" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group mt-4">
+                                <label for="allergies" class="h3">Allergies(s) :</label>
+                                <input type="text" class="form-control" id="allergies" placeholder="Nom" name="allergie">
+                            </div>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-4">
+                            <div class="form-group">
+                                <label for="profilepicture" class="h3">Photo de profil</label>
+                                <input type="file" class="form-control-file" id="profilepicture" name="photo">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col mt-4">
+                            <div class="form-group">
+                                <label for="rayon" class="h3">Rayon de recherche :</label>
+                                <input type="range" class="form-control-range" id="rayon" min="0km" max="500km" name="rayon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="h3 m-3">Intérêt(s) :</p>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="" id="sport" name="interet">
+                            <label class="form-check-label" for="sport">
+                                Sport
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="" id="art" name="interet">
+                            <label class="form-check-label" for="art">
+                                Art
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="" id="voyage" name="interet">
+                            <label class="form-check-label" for="voyage">
+                                Voyage
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col">
+                            <button class="btn btn-primary m-5" type="submit">Valider l'inscription</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col justify-content-center align-items-center d-flex">
+                <img src="{{ url_for('static', filename='img/illu3.png') }}" alt="illustration" class="w-75">
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/anim.js') }}"></script>
+{% endblock %}
