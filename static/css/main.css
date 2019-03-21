@@ -1,3 +1,4 @@
+/* Header */
 .w-5 {
     min-width: 130px;
     max-width: 130px;
@@ -11,22 +12,41 @@
     height: 70px;
 }
 
+/* Body */
 .body-container {
     min-width: calc(100% - 130px);
     max-width: calc(100% - 130px);
     margin-left: 130px;
 }
 
-
 /* Match Cards */
+.circle-card {
+    width: 100px;
+    height: 100px;
+}
+
+.match-circle {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: aqua;
+    position: absolute;
+    top: -35px;
+    right: -35px;
+}
+
+.line-height-5px {
+    line-height: 15px;
+}
+
 @media (min-width: 576px) {
 .card-columns {
     -webkit-column-count: 4;
     -moz-column-count: 4;
     column-count: 4;
-    -webkit-column-gap: 4.25rem;
-    -moz-column-gap: 4.25rem;
-    column-gap: 4.25rem;
+    -webkit-column-gap: 3rem;
+    -moz-column-gap: 3rem;
+    column-gap: 3rem;
     orphans: 0;
     widows: 0;
 }
