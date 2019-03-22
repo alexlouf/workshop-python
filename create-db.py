@@ -123,17 +123,6 @@ INSERT INTO alergie(name_alergie) VALUES(?)""", ("Cosmétiques",))#16
 cursor.execute("""
 INSERT INTO alergie(name_alergie) VALUES(?)""", ("Herbes",)) #17
 
-
-
-
-
-14 16
-
-
-
-
-
-
 # create table users_alergie_relation
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users_alergie(
