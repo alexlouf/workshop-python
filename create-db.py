@@ -78,61 +78,61 @@ CREATE TABLE IF NOT EXISTS alergie(
 
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Pollens",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Pollens",)) #1
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Acariens",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Acariens",)) #2
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Moisissures",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Moisissures",)) #3
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Poils d’animaux",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Poils d’animaux",)) #4
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("arachides",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("arachides",)) #5
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("blé/gluten",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("blé/gluten",)) #6
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("fruits de mer",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("fruits de mer",)) #7
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("graines de sésame",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("graines de sésame",))#8
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("lait",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("lait",))#9
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("noix",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("noix",))#10
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("œufs",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("œufs",))#11
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("soja",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("soja",))#12
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("sulfites",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("sulfites",))#13
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("moutarde",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("moutarde",))#14
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Soleil",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Soleil",))#15
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Cosmétiques",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Cosmétiques",))#16
 
 cursor.execute("""
-INSERT INTO alergie(name_alergie) VALUES(?)""", ("Herbes",))
+INSERT INTO alergie(name_alergie) VALUES(?)""", ("Herbes",)) #17
 
 
 
 
 
-
+14 16
 
 
 
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS users_alergie(
 
 # deux allergies par personne
 cursor.execute("""
-INSERT INTO users_alergie(id_users, id_alergie) VALUES(?, ?)""", (1, 2))
+INSERT INTO users_alergie(id_users, id_alergie) VALUES(?, ?)""", (1, 2)) 
 cursor.execute("""
 INSERT INTO users_alergie(id_users, id_alergie) VALUES(?, ?)""", (1, 3))
 cursor.execute("""
@@ -185,6 +185,31 @@ INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", 
 
 cursor.execute("""
 INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (4, 6))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (14, 16))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (4, 2))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (14, 15))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (6, 13))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (12, 7))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (11, 8))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (10, 9))
+
+cursor.execute("""
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (17, 16))
+
 
 cursor.execute("""SELECT * FROM users_alergie""")
 relation_table = cursor.fetchall()
