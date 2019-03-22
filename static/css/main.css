@@ -85,3 +85,15 @@ input[type="range"]:after {
     max-width: 225px;
 }
 
+/* Home Page */
+
+.hp_card {
+    width: 275px;
+    min-width: 275px;
+    max-width: 275px;
+}
+
+.hp_card img {
+    width: 55%;
+    margin-top: 2rem;
+}
