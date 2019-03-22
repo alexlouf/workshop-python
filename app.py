@@ -42,8 +42,6 @@ def do_admin_login():
     return redirect('/')
 
 
-
-
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
@@ -59,6 +57,23 @@ def signin():
 def validatesignin():
     session['logged_in'] = False
     print(request.form)
+    nom = request.form["name"]
+    prenom = request.form["surname"]
+    email = request.form["email"]
+    password = request.form["password"]
+    age = request.form["age"]
+    ville = request.form["city"]
+    sexe = request.form["sexe"]
+    description = request.form["description"]
+    sport = request.form["sport"]
+    voyage = request.form["voyage"]
+    musique = request.form["musique"]
+
+    #with sqlite3.connect('ma_base.db') as con:
+    #   cur = con.cursor()
+    #  cur.execute("INSERT INTO users(nom, prenom, email, password, age, ville, sexe, description, sport, voyage, musique) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    #             (nom, prenom, email, password, age, ville, sexe, description, sport, voyage, musique))
+
     return redirect('/')
 
 
