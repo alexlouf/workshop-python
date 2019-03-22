@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS users(
      prenom TEXT DEFAULT NULL,
      email TEXT DEFAULT NULL,
      password TEXT DEFAULT NULL,
-     age INTERGER DEFAULT NULL,
+     age INTEGER DEFAULT NULL,
      ville TEXT DEFAULT NULL,
      sexe INT DEFAULT NULL,
      photo TEXT DEFAULT NULL,
@@ -167,24 +167,24 @@ INSERT INTO users_alergie(id_users, id_alergie) VALUES(?, ?)""", (3, 7))
 
 # create table compatible_alergie
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS compatible_alergie(
-     id_alergie INT,
+CREATE TABLE IF NOT EXISTS not_compatible_alergie(
+     id_alergie_1 INT,
      id_alergie_2 INT
 )""")
 
 
 cursor.execute("""
-INSERT INTO compatible_alergie(id_alergie, id_alergie_2) VALUES(?, ?)""", (1, 2))
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (1, 2))
 
 
 cursor.execute("""
-INSERT INTO compatible_alergie(id_alergie, id_alergie_2) VALUES(?, ?)""", (2, 3))
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (2, 3))
 
 cursor.execute("""
-INSERT INTO compatible_alergie(id_alergie, id_alergie_2) VALUES(?, ?)""", (3, 1))
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (2, 6))
 
 cursor.execute("""
-INSERT INTO compatible_alergie(id_alergie, id_alergie_2) VALUES(?, ?)""", (4, 2))
+INSERT INTO not_compatible_alergie(id_alergie_1, id_alergie_2) VALUES(?, ?)""", (4, 6))
 
 cursor.execute("""SELECT * FROM users_alergie""")
 relation_table = cursor.fetchall()
@@ -204,13 +204,50 @@ innerJoin = cursor.fetchall()
 print("\n \n Print one users with categorie:  \n ")
 print(innerJoin)
 
+cursor.execute("""CREATE TEMPORARY TABLE list_id_user (
+    id INT)""")
+cursor.execute("""
+    SELECT
+        ua.id_users
+    FROM
+        users_alergie ua
+    WHERE
+        ua.id_alergie NOT IN
+            (SELECT
+                compatibility_table.id_alergie_2
+            FROM
+                not_compatible_alergie compatibility_table
+            WHERE
+                compatibility_table.id_alergie_1 IN
+                    (SELECT
+                        base_user_allergies.id_alergie
+                    FROM
+                        users_alergie base_user_allergies
+                    WHERE
+                        base_user_allergies.id_users=1)
+            )
+    AND
+        ua.id_users != 1
+""")
 
 
-
-
-
-
-
+fatRequete = cursor.fetchall()
+examples = fatRequete
+cursor.executemany("INSERT INTO list_id_user VALUES (?)", examples)
+fatRequeteazer = cursor.fetchall()
+cursor.execute("SELECT * FROM list_id_user ")
+contientIdUser = cursor.fetchall()
+cursor.execute("""
+SELECT   id
+FROM     list_id_user
+GROUP BY id
+HAVING   COUNT(id) = (SELECT
+                        base_user_allergies.id_alergie
+                    FROM
+                        users_alergie base_user_allergies)
+""")
+numberTotalIdMatch = cursor.fetchall()
+print("\n \n bon tableau:  \n ", numberTotalIdMatch)
 
 conn.close()
 
