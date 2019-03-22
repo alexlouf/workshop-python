@@ -57,11 +57,6 @@ INSERT INTO users(nom, prenom, email, password, age, ville, sexe, photo , descri
                 "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique ",
                 1, 0, 1, 0))
 
-
-
-conn.commit()
-
-
 cursor.execute("""SELECT * FROM users""")
 users = cursor.fetchall()
 print("\n \n Print all USER: \n ")
@@ -229,50 +224,13 @@ innerJoin = cursor.fetchall()
 print("\n \n Print one users with categorie:  \n ")
 print(innerJoin)
 
-cursor.execute("""CREATE TEMPORARY TABLE list_id_user (
-    id INT)""")
-cursor.execute("""
-    SELECT
-        ua.id_users
-    FROM
-        users_alergie ua
-    WHERE
-        ua.id_alergie NOT IN
-            (SELECT
-                compatibility_table.id_alergie_2
-            FROM
-                not_compatible_alergie compatibility_table
-            WHERE
-                compatibility_table.id_alergie_1 IN
-                    (SELECT
-                        base_user_allergies.id_alergie
-                    FROM
-                        users_alergie base_user_allergies
-                    WHERE
-                        base_user_allergies.id_users=1)
-            )
-    AND
-        ua.id_users != 1
-""")
+a = []
+oneUser = cursor.execute("""SELECT * FROM users""")
+innerJoin = cursor.fetchall()
+a.append(innerJoin)
 
-
-fatRequete = cursor.fetchall()
-examples = fatRequete
-cursor.executemany("INSERT INTO list_id_user VALUES (?)", examples)
-fatRequeteazer = cursor.fetchall()
-cursor.execute("SELECT * FROM list_id_user ")
-contientIdUser = cursor.fetchall()
-cursor.execute("""
-SELECT   id
-FROM     list_id_user
-GROUP BY id
-HAVING   COUNT(id) = (SELECT
-                        base_user_allergies.id_alergie
-                    FROM
-                        users_alergie base_user_allergies)
-""")
-numberTotalIdMatch = cursor.fetchall()
-print("\n \n bon tableau:  \n ", numberTotalIdMatch)
+print(a[0][0][0])
+conn.commit()
 
 conn.close()
 
